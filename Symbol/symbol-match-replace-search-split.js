@@ -68,3 +68,45 @@ const existLetterBandRplace3Times = {
 }
 
 console.log(testStr4.replace(existLetterBandRplace3Times, 'f')) // 'afffc'
+
+
+/**
+ * 
+ * Symbol.search
+ */
+
+const testStr5 = 'abc'
+
+// 定义一个查询生成器，查询对应字符串，
+// 匹配到返回 { exist: true, matched: Array<{ index: number, before: string, after: string }> }
+// 未匹配到返回 { exist: false, matched: [] }
+
+function createSearchRule(targetStr) {
+  return {
+    [Symbol.search]: function (value) {
+      const matched = []
+      let idx = 0
+
+      while(idx < value.length) {
+        if (value[idx] === targetStr) {
+          const match = {
+            index: idx,
+            before: value.slice(0, idx),
+            after: value.slice(idx + 1)
+          }
+          matched.push(match)
+        }
+        idx++
+      }
+      return { exist: !!matched.length, matched }
+    }
+  }
+}
+
+// 创建查找'f'字符规则
+const findFRule = createSearchRule('f')
+const testStr6 = 'abcdefghijk'
+
+console.log(
+  testStr6.search(findFRule) // { exist: true, matched: [ { index: 5, before: 'abcde', after: 'ghijk' } ] }
+)
