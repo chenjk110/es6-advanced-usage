@@ -1,5 +1,5 @@
 /**
- * 
+ * 迭代执行器
  * @param {Generator Function} defTask 
  */
 function run(defTask) {
@@ -7,30 +7,37 @@ function run(defTask) {
 
   let result = task.next()
 
+  // 处理结果并继续迭代
   function handleResAndNext(res) {
     result = task.next(res)
     next()
   }
 
+  // 处理错误并抛出异常
   function handleErr(err) {
     task.throw(err)
   }
 
+  // 通用回调函数
+  function commonCallback(err, res) {
+    if (err) {
+      handleErr(err)
+      return
+    }
+    handleResAndNext(res)
+  }
+  
   function next() {
     if (!result.done) {
       if (typeof result.value === 'function') {
-        result.value(function(err, res) {
-          if (err) {
-            handleErr(err)
-            return
-          }
-          handleResAndNext(res)
-        })
+        // 传统方式回调处理
+        result.value(commonCallback)
       } else if (result.value instanceof Promise) {
+        // promise回调处理
         return result.value.then(handleResAndNext, handleErr)
       } else {
-        result = task.next(result.value)
-        next()
+        // 返回值直接下一步处理
+        handleResAndNext(result.value)
       }
     }
   }
