@@ -16,3 +16,7 @@
 ### 2.2 [built-in](./Generator/built-in-iterator-api.js)
 ### 2.3 [advanced-usage](./Generator/advanced-usage.js)
 ### 2.4 [async-control](./Generator/async-control.js)
+
+## 3. Class
+### 3.1 [new-target](./Class/new-target.js)
+### 3.2 [super](./Class/super.js)
