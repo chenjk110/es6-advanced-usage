@@ -48,3 +48,23 @@ const find3LetterOfA = {
 console.log(testStr3.match(find3LetterOfA)) // ['app', 'ang']
 
 
+/**
+ * Symbol.replace
+ */
+
+const testStr4 = 'abc'
+// 查找'b'，并替换，且替换的字符串重复3次
+const existLetterBandRplace3Times = {
+  [Symbol.replace]: function (value, replacement) {
+    let idx = 0
+    while(idx < value.length) {
+      if (value[idx] === 'b') {
+        value = value.slice(0, idx) + replacement.repeat(3) + value.slice(idx + 1)
+      }
+      idx++
+    }
+    return value
+  }
+}
+
+console.log(testStr4.replace(existLetterBandRplace3Times, 'f')) // 'afffc'
