@@ -10,3 +10,6 @@
 ### 1.8 [Symbol.search](./Symbol/symbol-match-replace-search-split.js)
 ### 1.9 [Symbol.toPrimitive](./Symbol/symbol-toPrimitive.js)
 ### 1.10 [Symbol.toStringTag](./Symbol/symbol-toStringTag.js)
+
+## 2. Generator
+### 2.1 [prepare](./Generator/prepare.js)
