@@ -110,3 +110,40 @@ const testStr6 = 'abcdefghijk'
 console.log(
   testStr6.search(findFRule) // { exist: true, matched: [ { index: 5, before: 'abcde', after: 'ghijk' } ] }
 )
+
+
+/**
+ * Symbol.split
+ * 
+ */
+
+// 创建分割，并结构化分隔结果 { original: string, marks: Array<number>, splited: Array<string> }
+function createSplitRule(targetStr) {
+  return {
+    [Symbol.split]: function (value) {
+      const splited = []
+      const marks = []
+      let idx = 0
+      let tmp = ''
+      while(idx < value.length) {
+        if (value[idx] === targetStr) {
+          splited.push(tmp)
+          marks.push(idx)
+          tmp = ''
+        } else {
+          tmp += value[idx]
+        }
+        idx++
+      }
+      tmp.length && splited.push(tmp)
+
+      return { original: value, marks, splited }
+    }
+  }
+}
+
+const splitRule = createSplitRule(' ')
+const testStr7 = 'apple orange banana'
+
+console.log(testStr7.split(splitRule))
+// { original: 'apple orange banana', marks: [ 5, 12 ], splited: [ 'apple', 'orange', 'banana' ] }
