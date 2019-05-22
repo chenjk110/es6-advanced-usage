@@ -13,4 +13,5 @@
 
 ## 2. Generator
 ### 2.1 [prepare](./Generator/prepare.js)
-### 2.1 [built-in](./Generator/built-in-iterator-api.js)
+### 2.2 [built-in](./Generator/built-in-iterator-api.js)
+### 2.3 [advanced-usage](./Generator/advanced-usage.js)
