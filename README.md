@@ -8,3 +8,4 @@
 ### 1.6 [Symbol.replace](./Symbol/symbol-match-replace-search-split.js)
 ### 1.7 [Symbol.split](./Symbol/symbol-match-replace-search-split.js)
 ### 1.8 [Symbol.search](./Symbol/symbol-match-replace-search-split.js)
+### 1.9 [Symbol.search](./Symbol/symbol-toPrimitive.js)
