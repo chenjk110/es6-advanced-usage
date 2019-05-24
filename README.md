@@ -20,3 +20,10 @@
 ## 3. Class
 ### 3.1 [new-target](./Class/new-target.js)
 ### 3.2 [super](./Class/super.js)
+
+## 4. Proxy
+### 4.1 [get](./Proxy/get.js)
+### 4.2 [set](./Proxy/set.js)
+### 4.3 [has](./Proxy/has.js)
+### 4.4 [apply](./Proxy/apply.js)
+### 4.5 [deleteProperty](./Proxy/deleteProperty.js)
